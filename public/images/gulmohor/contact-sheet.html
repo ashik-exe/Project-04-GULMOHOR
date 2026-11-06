@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gulmohor Resort — Visual Asset Contact Sheet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0d5c3a;
+      --primary-dark: #073823;
+      --gold: #d4af37;
+      --gold-dark: #b8972e;
+      --bg: #f8faf9;
+      --surface: #ffffff;
+      --text: #1c2826;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --radius: 12px;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 80px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #fff;
+      padding: 60px 30px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+    }
+
+    header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    header p.tagline {
+      font-size: 1.15rem;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 25px;
+      letter-spacing: 0.5px;
+    }
+
+    .stats-bar {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .stat-number {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+
+    .filter-bar {
+      position: sticky;
+      top: 15px;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      padding: 12px 18px;
+      border-radius: 50px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      margin-bottom: 35px;
+      border: 1px solid var(--border);
+    }
+
+    .filter-btn {
+      padding: 8px 18px;
+      border-radius: 30px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover {
+      color: var(--primary);
+      background: #f1f5f9;
+    }
+
+    .filter-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(13, 92, 58, 0.3);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 30px;
+    }
+
+    .asset-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+    }
+
+    .asset-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+    }
+
+    .image-wrapper {
+      position: relative;
+      width: 100%;
+      height: 230px;
+      background: #e2e8f0;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .image-wrapper:hover img {
+      transform: scale(1.05);
+    }
+
+    .category-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 4px;
+      color: #fff;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .category-badge.hero { background: #0d5c3a; }
+    .category-badge.rooms { background: #2563eb; }
+    .category-badge.pool { background: #0284c7; }
+    .category-badge.dining { background: #b45309; }
+    .category-badge.nature { background: #15803d; }
+    .category-badge.events { background: #7c3aed; }
+    .category-badge.brand { background: #b8972e; }
+
+    .res-badge {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #ffffff;
+      backdrop-filter: blur(4px);
+    }
+
+    .card-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .asset-id {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--gold-dark);
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .asset-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+      line-height: 1.35;
+    }
+
+    .asset-desc {
+      font-size: 0.88rem;
+      color: #475569;
+      margin-bottom: 16px;
+      flex-grow: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      padding: 8px 0;
+      border-top: 1px solid #f1f5f9;
+      border-bottom: 1px solid #f1f5f9;
+      margin-bottom: 12px;
+      color: var(--text-muted);
+    }
+
+    .source-info {
+      font-size: 0.82rem;
+      color: #64748b;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .placement-tag {
+      font-size: 0.82rem;
+      color: var(--primary);
+      background: #f0fdf4;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid #bbf7d0;
+      margin-bottom: 12px;
+    }
+
+    .rights-pill {
+      font-size: 0.74rem;
+      color: #64748b;
+      background: #f8fafc;
+      padding: 6px 8px;
+      border-radius: 4px;
+      border: 1px dashed #cbd5e1;
+      line-height: 1.3;
+    }
+
+    /* Lightbox Modal */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.92);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+
+    .lightbox-caption {
+      position: absolute;
+      bottom: 25px;
+      color: #ffffff;
+      font-size: 1.1rem;
+      text-align: center;
+      background: rgba(0,0,0,0.6);
+      padding: 8px 20px;
+      border-radius: 20px;
+    }
+
+    .close-lightbox {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      color: #fff;
+      font-size: 2.5rem;
+      cursor: pointer;
+      font-weight: 300;
+    }
+
+    .disclaimer-banner {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 30px;
+      font-size: 0.92rem;
+      color: #92400e;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>GULMOHOR RESORT</h1>
+    <p class="tagline">"The Perfect Place for Your Perfect Day" • Sreenagar, Damla, Munshiganj</p>
+    <div class="stats-bar">
+      <div class="stat-box">
+        <div class="stat-number">34</div>
+        <div class="stat-label">Total Curated Assets</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">21</div>
+        <div class="stat-label">Native 1080p60 Frames</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">7</div>
+        <div class="stat-label">Organized Folders</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Authentic Grounds</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="disclaimer-banner">
+      <strong>⚠️ Internal Website Demo Notice:</strong> All still frames and photographs cataloged below have been extracted and curated directly from authentic visitor vlogs and the official Gulmohor Resort Facebook page strictly for private design mockup and client demonstration purposes. Prior to commercial public launch, high-resolution master RAW/ProRes footage and written commercial releases must be acquired from the original creators.
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterCategory('all')">All Assets (34)</button>
+      <button class="filter-btn" onclick="filterCategory('hero')">Hero & Banners (5)</button>
+      <button class="filter-btn" onclick="filterCategory('rooms')">Rooms & Suites (6)</button>
+      <button class="filter-btn" onclick="filterCategory('pool')">Swimming Pool (5)</button>
+      <button class="filter-btn" onclick="filterCategory('dining')">Restaurant & Dining (4)</button>
+      <button class="filter-btn" onclick="filterCategory('nature')">Gardens & Nature (6)</button>
+      <button class="filter-btn" onclick="filterCategory('events')">Events & Attractions (6)</button>
+      <button class="filter-btn" onclick="filterCategory('brand')">Brand Identity (2)</button>
+    </div>
+
+    <div class="grid" id="assetGrid">
+      
+    <div class="asset-card" data-category="hero">
+      <div class="image-wrapper" onclick="openLightbox('hero/hero-resort-mansion-pool-daytime.jpg', 'Gulmohor Resort White Mansion & Grand Swimming Pool Deck', 'GUL-HERO-001')">
+        <img src="hero/hero-resort-mansion-pool-daytime.jpg" alt="Gulmohor Resort White Mansion & Grand Swimming Pool Deck" loading="lazy" />
+        <span class="category-badge hero">HERO</span>
+        <span class="res-badge">1920x1080</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-HERO-001</div>
+        <h3 class="asset-title">Gulmohor Resort White Mansion & Grand Swimming Pool Deck</h3>
+        <p class="asset-desc">Expansive wide landscape perspective of the two-story white resort mansion, neo-classical Roman columns, ornate wrought-iron balcony railings, and sparkling crystal turquoise swimming pool with surrounding rose flowerbeds in bright natural daylight.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 352.9 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 10/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> RATUL & RUBAIYA (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 05:10 (310s) (1920x1080 (1080p60 VP9))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Homepage Hero Section / Primary Header Banner
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="hero">
+      <div class="image-wrapper" onclick="openLightbox('hero/hero-swimming-pool-patio-loungers.jpg', 'Poolside Patio with Reclining Sun Loungers & Parasols', 'GUL-HERO-002')">
+        <img src="hero/hero-swimming-pool-patio-loungers.jpg" alt="Poolside Patio with Reclining Sun Loungers & Parasols" loading="lazy" />
+        <span class="category-badge hero">HERO</span>
+        <span class="res-badge">1920x1080</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-HERO-002</div>
+        <h3 class="asset-title">Poolside Patio with Reclining Sun Loungers & Parasols</h3>
+        <p class="asset-desc">Vibrant landscape shot showcasing the poolside stone patio equipped with white reclining sun loungers, green shade umbrellas, palm trees, and the sunlit resort mansion facade facing the swimming pool.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 369.8 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 10/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> RATUL & RUBAIYA (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 05:16 (316s) (1920x1080 (1080p60 VP9))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Homepage Leisure Carousel / Pool & Relaxation Feature
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="hero">
+      <div class="image-wrapper" onclick="openLightbox('hero/hero-rose-garden-mansion-walkway.jpg', 'Cobblestone Promenade & Blooming Rose Gardens', 'GUL-HERO-003')">
+        <img src="hero/hero-rose-garden-mansion-walkway.jpg" alt="Cobblestone Promenade & Blooming Rose Gardens" loading="lazy" />
+        <span class="category-badge hero">HERO</span>
+        <span class="res-badge">1920x1080</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-HERO-003</div>
+        <h3 class="asset-title">Cobblestone Promenade & Blooming Rose Gardens</h3>
+        <p class="asset-desc">Stunning wide cobblestone walkway flanked by vibrant blooming red and pink rose bushes on the right, the crystal swimming pool on the left, and the white architectural resort building with upper balcony.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 521.1 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 10/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> RATUL & RUBAIYA (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 04:47 (287s) (1920x1080 (1080p60 VP9))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> About Us Hero Banner / Resort Grounds & Landscaping Feature
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="hero">
+      <div class="image-wrapper" onclick="openLightbox('hero/hero-balcony-panoramic-pool-estate.jpg', 'Upper Balcony Panoramic View of Resort Estate', 'GUL-HERO-004')">
+        <img src="hero/hero-balcony-panoramic-pool-estate.jpg" alt="Upper Balcony Panoramic View of Resort Estate" loading="lazy" />
+        <span class="category-badge hero">HERO</span>
+        <span class="res-badge">1920x1080</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-HERO-004</div>
+        <h3 class="asset-title">Upper Balcony Panoramic View of Resort Estate</h3>
+        <p class="asset-desc">Elevated panoramic vista captured from the first-floor guest room balcony, gazing out over the full swimming pool length, patio furniture, sun umbrellas, manicured lawn, and surrounding tropical Munshiganj greenery.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 355.6 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 9.5/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> RATUL & RUBAIYA (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 07:33 (453s) (1920x1080 (1080p60 VP9))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Property Overview Banner / Resort Grounds Virtual Tour
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="hero">
+      <div class="image-wrapper" onclick="openLightbox('hero/hero-mansion-pool-rose-foreground.jpg', 'Rose Blooms Foreground Framing White Resort Mansion & Pool', 'GUL-HERO-005')">
+        <img src="hero/hero-mansion-pool-rose-foreground.jpg" alt="Rose Blooms Foreground Framing White Resort Mansion & Pool" loading="lazy" />
+        <span class="category-badge hero">HERO</span>
+        <span class="res-badge">1920x1080</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-HERO-005</div>
+        <h3 class="asset-title">Rose Blooms Foreground Framing White Resort Mansion & Pool</h3>
+        <p class="asset-desc">Artistic wide shot with vivid crimson and pink roses sharply in focus in the lower foreground, leading the viewer's eye into the serene turquoise pool waters and grand white villa building.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 508.7 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 10/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> RATUL & RUBAIYA (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 04:58 (298s) (1920x1080 (1080p60 VP9))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Welcome Section Hero / Secondary Hero Slider
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="rooms">
+      <div class="image-wrapper" onclick="openLightbox('rooms/room-deluxe-queen-bed-lounge.jpg', 'Couple Deluxe Room #2 Queen Bed & Bedroom Layout', 'GUL-ROOM-001')">
+        <img src="rooms/room-deluxe-queen-bed-lounge.jpg" alt="Couple Deluxe Room #2 Queen Bed & Bedroom Layout" loading="lazy" />
+        <span class="category-badge rooms">ROOMS</span>
+        <span class="res-badge">1920x1080</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-ROOM-001</div>
+        <h3 class="asset-title">Couple Deluxe Room #2 Queen Bed & Bedroom Layout</h3>
+        <p class="asset-desc">Comprehensive interior view of Couple Deluxe Room #2 showing the comfortable queen-size bed dressed in crisp white linens, padded headboard, floating bedside table, refreshment credenza with minibar, and plush velvet lounge chair on polished ceramic flooring.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 76.1 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 9.5/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> RATUL & RUBAIYA (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 07:56 (476s) (1920x1080 (1080p60 VP9))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Rooms & Accommodation Section — Couple Deluxe Primary Card
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="rooms">
+      <div class="image-wrapper" onclick="openLightbox('rooms/room-deluxe-sofa-coffee-station.jpg', 'Deluxe Room Velvet Seating Lounge & Coffee Station', 'GUL-ROOM-002')">
+        <img src="rooms/room-deluxe-sofa-coffee-station.jpg" alt="Deluxe Room Velvet Seating Lounge & Coffee Station" loading="lazy" />
+        <span class="category-badge rooms">ROOMS</span>
+        <span class="res-badge">1920x1080</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-ROOM-002</div>
+        <h3 class="asset-title">Deluxe Room Velvet Seating Lounge & Coffee Station</h3>
+        <p class="asset-desc">Cozy corner perspective inside Couple Deluxe Room highlighting the two-seater velvet upholstered lounge sofa, credenza table with stainless steel electric kettle, bottled water, and corner bedside table.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 92.3 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 9.5/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> RATUL & RUBAIYA (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 07:54 (474s) (1920x1080 (1080p60 VP9))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Room Amenities Carousel / In-Room Comfort Features
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="rooms">
+      <div class="image-wrapper" onclick="openLightbox('rooms/room-deluxe-refreshment-minibar.jpg', 'In-Room Minibar Refrigerator & Electric Kettle Station', 'GUL-ROOM-003')">
+        <img src="rooms/room-deluxe-refreshment-minibar.jpg" alt="In-Room Minibar Refrigerator & Electric Kettle Station" loading="lazy" />
+        <span class="category-badge rooms">ROOMS</span>
+        <span class="res-badge">1920x1080</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-ROOM-003</div>
+        <h3 class="asset-title">In-Room Minibar Refrigerator & Electric Kettle Station</h3>
+        <p class="asset-desc">Clean amenity detail shot of the guest room refreshment credenza housing an integrated Marcel compact minibar refrigerator, complimentary mineral water bottles, and electric kettle for tea/coffee preparation.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 72.1 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 9.0/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> RATUL & RUBAIYA (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 08:08 (488s) (1920x1080 (1080p60 VP9))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Room Amenities Grid — Food & Beverage Inclusions
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="rooms">
+      <div class="image-wrapper" onclick="openLightbox('rooms/room-suite-master-king-bed.jpg', 'Premium Suite Master Bedroom with Tufted Headboard', 'GUL-ROOM-004')">
+        <img src="rooms/room-suite-master-king-bed.jpg" alt="Premium Suite Master Bedroom with Tufted Headboard" loading="lazy" />
+        <span class="category-badge rooms">ROOMS</span>
+        <span class="res-badge">1280x720</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-ROOM-004</div>
+        <h3 class="asset-title">Premium Suite Master Bedroom with Tufted Headboard</h3>
+        <p class="asset-desc">Elegant master bedroom of the Premium Suite featuring a plush tufted cream headboard, king-size bed with four plump pillows and duvet, flanking nightstands with flower vase, and warm modern interior ambiance.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 37.8 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 9.0/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> md juglul haidar (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 08:38 (518s) (1280x720 (720p AVC))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Rooms Section — Premium Suite Showcase Card
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="rooms">
+      <div class="image-wrapper" onclick="openLightbox('rooms/room-suite-living-lounge.jpg', 'Premium Suite Separate Living Room with Plush Sofas', 'GUL-ROOM-005')">
+        <img src="rooms/room-suite-living-lounge.jpg" alt="Premium Suite Separate Living Room with Plush Sofas" loading="lazy" />
+        <span class="category-badge rooms">ROOMS</span>
+        <span class="res-badge">1280x720</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-ROOM-005</div>
+        <h3 class="asset-title">Premium Suite Separate Living Room with Plush Sofas</h3>
+        <p class="asset-desc">Dedicated private living lounge within the Premium Suite, furnished with two comfortable modular armchairs, curtains, dining chair, and coffee table for family or executive gatherings.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 35.4 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 8.5/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> md juglul haidar (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 08:28 (508s) (1280x720 (720p AVC))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Suite Gallery Modal / Family Suite Layout Detail
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="rooms">
+      <div class="image-wrapper" onclick="openLightbox('rooms/room-suite-ensuite-glass-bathroom.jpg', 'Premium Suite Ensuite Modern Glass Shower Bathroom', 'GUL-ROOM-006')">
+        <img src="rooms/room-suite-ensuite-glass-bathroom.jpg" alt="Premium Suite Ensuite Modern Glass Shower Bathroom" loading="lazy" />
+        <span class="category-badge rooms">ROOMS</span>
+        <span class="res-badge">1280x720</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-ROOM-006</div>
+        <h3 class="asset-title">Premium Suite Ensuite Modern Glass Shower Bathroom</h3>
+        <p class="asset-desc">Modern tiled ensuite guest bathroom showcasing a tempered glass walk-in shower enclosure with brass fixtures, modern toilet commode, vanity basin, and sanitary amenities.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 50.6 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 8.5/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> md juglul haidar (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 08:58 (538s) (1280x720 (720p AVC))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Room Specs Grid / Hygiene & Bathroom Amenities
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="pool">
+      <div class="image-wrapper" onclick="openLightbox('pool/pool-crystal-turquoise-water.jpg', 'Crystal Clear Turquoise Swimming Pool Water', 'GUL-POOL-001')">
+        <img src="pool/pool-crystal-turquoise-water.jpg" alt="Crystal Clear Turquoise Swimming Pool Water" loading="lazy" />
+        <span class="category-badge pool">POOL</span>
+        <span class="res-badge">1920x1080</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-POOL-001</div>
+        <h3 class="asset-title">Crystal Clear Turquoise Swimming Pool Water</h3>
+        <p class="asset-desc">Vivid perspective of the immaculate turquoise pool water, showing tiled pool basin, clean water lines, underwater steps, and sunny reflections of the resort columns.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 508.7 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 10/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> RATUL & RUBAIYA (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 05:00 (300s) (1920x1080 (1080p60 VP9))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Swimming Pool Feature Section / Water Hygiene & Dimensions Card
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="pool">
+      <div class="image-wrapper" onclick="openLightbox('pool/pool-deck-loungers-sun-umbrellas.jpg', 'Paved Pool Deck with Reclining Sun Loungers & Parasols', 'GUL-POOL-002')">
+        <img src="pool/pool-deck-loungers-sun-umbrellas.jpg" alt="Paved Pool Deck with Reclining Sun Loungers & Parasols" loading="lazy" />
+        <span class="category-badge pool">POOL</span>
+        <span class="res-badge">1920x1080</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-POOL-002</div>
+        <h3 class="asset-title">Paved Pool Deck with Reclining Sun Loungers & Parasols</h3>
+        <p class="asset-desc">Wide landscape shot of the paved pool promenade displaying sun loungers, umbrella shades, garden greenery, and full pool length under daylight.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 348.2 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 9.5/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> RATUL & RUBAIYA (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 05:14 (314s) (1920x1080 (1080p60 VP9))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Pool Amenities / Day Package Pool Access Banner
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="pool">
+      <div class="image-wrapper" onclick="openLightbox('pool/pool-mansion-facade-reflection.jpg', 'Resort Architectural Columns Reflected in Pool Water', 'GUL-POOL-003')">
+        <img src="pool/pool-mansion-facade-reflection.jpg" alt="Resort Architectural Columns Reflected in Pool Water" loading="lazy" />
+        <span class="category-badge pool">POOL</span>
+        <span class="res-badge">1920x1080</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-POOL-003</div>
+        <h3 class="asset-title">Resort Architectural Columns Reflected in Pool Water</h3>
+        <p class="asset-desc">Wide composition capturing the grandeur of the multi-level white resort villa with its grand columns mirrored symmetrically in the calm blue-green waters of the pool.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 352.9 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 10/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> RATUL & RUBAIYA (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 05:10 (310s) (1920x1080 (1080p60 VP9))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Architecture & Pool Showcase Gallery
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="pool">
+      <div class="image-wrapper" onclick="openLightbox('pool/pool-golden-hour-rose-border.jpg', 'Golden Hour Sunlight on Poolside Blooming Roses', 'GUL-POOL-004')">
+        <img src="pool/pool-golden-hour-rose-border.jpg" alt="Golden Hour Sunlight on Poolside Blooming Roses" loading="lazy" />
+        <span class="category-badge pool">POOL</span>
+        <span class="res-badge">540x960</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-POOL-004</div>
+        <h3 class="asset-title">Golden Hour Sunlight on Poolside Blooming Roses</h3>
+        <p class="asset-desc">Atmospheric vertical photograph capturing blooming pink rose bushes along the pool edge in golden late-afternoon sun rays, with glistening swimming pool tiles in the soft background.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 76.6 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 9.0/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> Gulmohor Resort Official Facebook Page<br/>
+          <strong>Timestamp:</strong> N/A (Published 2024) (540x960 (Native FB Mobile High-Res))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Atmospheric Lifestyle Gallery / Mobile Story Carousel
+        </div>
+        <div class="rights-pill">
+          OFFICIAL_BUSINESS_PHOTO (Facebook Public Post — Request Original Uncompressed RAW file for Commercial Production)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="pool">
+      <div class="image-wrapper" onclick="openLightbox('pool/pool-garden-pathway-glimpse.jpg', 'Lush Garden Archway Looking Toward Swimming Pool', 'GUL-POOL-005')">
+        <img src="pool/pool-garden-pathway-glimpse.jpg" alt="Lush Garden Archway Looking Toward Swimming Pool" loading="lazy" />
+        <span class="category-badge pool">POOL</span>
+        <span class="res-badge">540x960</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-POOL-005</div>
+        <h3 class="asset-title">Lush Garden Archway Looking Toward Swimming Pool</h3>
+        <p class="asset-desc">Picturesque vertical perspective through a verdant leafy garden archway and stepping stone path, looking across the lawn to the sparkling blue pool and white mansion.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 122.0 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 9.0/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> Gulmohor Resort Official Facebook Page<br/>
+          <strong>Timestamp:</strong> N/A (Published 2024) (540x960 (Native FB Mobile High-Res))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Garden & Pool Harmonization Showcase / Mobile App View
+        </div>
+        <div class="rights-pill">
+          OFFICIAL_BUSINESS_PHOTO (Facebook Public Post — Request Original Uncompressed RAW file for Commercial Production)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="dining">
+      <div class="image-wrapper" onclick="openLightbox('dining/dining-restaurant-panoramic-pool-view.jpg', 'Ground Floor Restaurant with Panoramic Glass Pool View', 'GUL-DINE-001')">
+        <img src="dining/dining-restaurant-panoramic-pool-view.jpg" alt="Ground Floor Restaurant with Panoramic Glass Pool View" loading="lazy" />
+        <span class="category-badge dining">DINING</span>
+        <span class="res-badge">1920x1080</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-DINE-001</div>
+        <h3 class="asset-title">Ground Floor Restaurant with Panoramic Glass Pool View</h3>
+        <p class="asset-desc">Spacious, sun-drenched indoor dining hall featuring massive floor-to-ceiling glass picture windows offering diners an unobstructed panoramic view of the swimming pool and rose garden outside, set with white dining chairs and tables on polished tile.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 192.5 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 10/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> RATUL & RUBAIYA (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 06:17 (377s) (1920x1080 (1080p60 VP9))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Dining & Restaurant Section Hero / Culinary Ambiance Banner
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="dining">
+      <div class="image-wrapper" onclick="openLightbox('dining/dining-indoor-lounge-hall.jpg', 'Spacious Air-Conditioned Restaurant Lounge & Seating', 'GUL-DINE-002')">
+        <img src="dining/dining-indoor-lounge-hall.jpg" alt="Spacious Air-Conditioned Restaurant Lounge & Seating" loading="lazy" />
+        <span class="category-badge dining">DINING</span>
+        <span class="res-badge">1920x1080</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-DINE-002</div>
+        <h3 class="asset-title">Spacious Air-Conditioned Restaurant Lounge & Seating</h3>
+        <p class="asset-desc">Ground floor indoor restaurant lounge showing comfortable cream and white leather tub armchairs, modern glass coffee table, ceiling fans, AC units, decorative artificial cherry blossom tree, and dining table arrangement.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 145.7 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 9.5/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> RATUL & RUBAIYA (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 06:08 (368s) (1920x1080 (1080p60 VP9))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Restaurant Seating & Ambience Showcase / Group Dining Comforts
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="dining">
+      <div class="image-wrapper" onclick="openLightbox('dining/dining-buffet-chafing-service.jpg', 'Professional Buffet Catering with Stainless Chafing Dishes', 'GUL-DINE-003')">
+        <img src="dining/dining-buffet-chafing-service.jpg" alt="Professional Buffet Catering with Stainless Chafing Dishes" loading="lazy" />
+        <span class="category-badge dining">DINING</span>
+        <span class="res-badge">540x960</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-DINE-003</div>
+        <h3 class="asset-title">Professional Buffet Catering with Stainless Chafing Dishes</h3>
+        <p class="asset-desc">Catering service staff member in clean grey uniform and protective food handling gloves preparing a heavy-duty stainless steel buffet chafing dish along the buffet service line.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 35.6 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 8.5/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> Gulmohor Resort Official Facebook Page<br/>
+          <strong>Timestamp:</strong> N/A (Published 2024) (540x960 (Native FB Mobile High-Res))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Corporate & Group Buffet Service / Event Catering Packages
+        </div>
+        <div class="rights-pill">
+          OFFICIAL_BUSINESS_PHOTO (Facebook Public Post — Request Original Uncompressed RAW file for Commercial Production)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="dining">
+      <div class="image-wrapper" onclick="openLightbox('dining/dining-traditional-iftar-delicacies.jpg', 'Freshly Prepared Bengali Delicacies & Fritters', 'GUL-DINE-004')">
+        <img src="dining/dining-traditional-iftar-delicacies.jpg" alt="Freshly Prepared Bengali Delicacies & Fritters" loading="lazy" />
+        <span class="category-badge dining">DINING</span>
+        <span class="res-badge">1920x1080</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-DINE-004</div>
+        <h3 class="asset-title">Freshly Prepared Bengali Delicacies & Fritters</h3>
+        <p class="asset-desc">Close-up culinary frame of traditional golden crispy Bengali fritters and savory appetizers served in clean white ceramic ramekins during an authentic seasonal dinner at the resort.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 146.1 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 8.5/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> RATUL & RUBAIYA (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 11:45 (705s) (1920x1080 (1080p60 VP9))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Food Menu Grid / Authentic Bengali Cuisine Feature
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="nature">
+      <div class="image-wrapper" onclick="openLightbox('nature/nature-mango-trees-shaded-hammock.jpg', 'Shaded Hammock Suspended Between Mature Mango Trees', 'GUL-NAT-001')">
+        <img src="nature/nature-mango-trees-shaded-hammock.jpg" alt="Shaded Hammock Suspended Between Mature Mango Trees" loading="lazy" />
+        <span class="category-badge nature">NATURE</span>
+        <span class="res-badge">1920x1080</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-NAT-001</div>
+        <h3 class="asset-title">Shaded Hammock Suspended Between Mature Mango Trees</h3>
+        <p class="asset-desc">Vivid idyllic landscape capturing a vibrant multi-colored striped hammock slung between two large shaded mango trees on a carpet of fresh green grass, with the resort villa, ornamental palms, and flowering bougainvillea in the backdrop.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 609.0 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 10/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> RATUL & RUBAIYA (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 03:33 (213s) (1920x1080 (1080p60 VP9))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Nature & Relaxation Section / Peaceful Retreat Highlight / 'You Find Peace' Feature
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="nature">
+      <div class="image-wrapper" onclick="openLightbox('nature/nature-garden-gazebo-pavilion.jpg', 'Ornamental Garden Gazebo Pavilion & Cobblestone Path', 'GUL-NAT-002')">
+        <img src="nature/nature-garden-gazebo-pavilion.jpg" alt="Ornamental Garden Gazebo Pavilion & Cobblestone Path" loading="lazy" />
+        <span class="category-badge nature">NATURE</span>
+        <span class="res-badge">1920x1080</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-NAT-002</div>
+        <h3 class="asset-title">Ornamental Garden Gazebo Pavilion & Cobblestone Path</h3>
+        <p class="asset-desc">Picturesque view of an open octagonal garden pavilion with a green fluted roof and white-gold pillars, surrounded by stone pavers, lush green lawn, mature trees, and garden benches.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 637.0 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 10/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> RATUL & RUBAIYA (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 03:56 (236s) (1920x1080 (1080p60 VP9))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Outdoor Spaces / Garden Pavilion Walkways / Scenic Resting Spots
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="nature">
+      <div class="image-wrapper" onclick="openLightbox('nature/nature-blooming-rose-gardens.jpg', 'Vibrant Flowering Rose Beds Along Resort Pathway', 'GUL-NAT-003')">
+        <img src="nature/nature-blooming-rose-gardens.jpg" alt="Vibrant Flowering Rose Beds Along Resort Pathway" loading="lazy" />
+        <span class="category-badge nature">NATURE</span>
+        <span class="res-badge">1920x1080</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-NAT-003</div>
+        <h3 class="asset-title">Vibrant Flowering Rose Beds Along Resort Pathway</h3>
+        <p class="asset-desc">Expansive landscape shot highlighting dense clusters of blooming red, pink, and peach roses lining the stone-paved promenade between the pool deck and manicured garden.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 521.1 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 10/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> RATUL & RUBAIYA (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 04:47 (287s) (1920x1080 (1080p60 VP9))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Botanical Landscaping Gallery / Flora & Environmental Ambiance
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="nature">
+      <div class="image-wrapper" onclick="openLightbox('nature/nature-entrance-water-fountain.jpg', 'Tiered Water Fountain Canal Along Entrance Walkway', 'GUL-NAT-004')">
+        <img src="nature/nature-entrance-water-fountain.jpg" alt="Tiered Water Fountain Canal Along Entrance Walkway" loading="lazy" />
+        <span class="category-badge nature">NATURE</span>
+        <span class="res-badge">1920x1080</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-NAT-004</div>
+        <h3 class="asset-title">Tiered Water Fountain Canal Along Entrance Walkway</h3>
+        <p class="asset-desc">Architectural entrance feature displaying a blue-tiled water canal and tiered ornamental white fountains bordered by manicured privet hedges, palm trees, and paving stones.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 520.1 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 9.5/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> RATUL & RUBAIYA (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 01:42 (102s) (1920x1080 (1080p60 VP9))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Arrival Experience / Resort Grounds & Landscaping Guide
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="nature">
+      <div class="image-wrapper" onclick="openLightbox('nature/nature-tree-lined-avenue.jpg', 'Paved Entrance Promenade with Green Hedges & Palm Trees', 'GUL-NAT-005')">
+        <img src="nature/nature-tree-lined-avenue.jpg" alt="Paved Entrance Promenade with Green Hedges & Palm Trees" loading="lazy" />
+        <span class="category-badge nature">NATURE</span>
+        <span class="res-badge">1920x1080</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-NAT-005</div>
+        <h3 class="asset-title">Paved Entrance Promenade with Green Hedges & Palm Trees</h3>
+        <p class="asset-desc">Grand paved entrance avenue framed by manicured green hedges, coconut palms, and white decorative canopies on the left, welcoming guests as they approach the main grounds.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 542.2 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 9.5/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> RATUL & RUBAIYA (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 02:15 (135s) (1920x1080 (1080p60 VP9))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Location & Directions / Resort Estate Layout Overview
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="nature">
+      <div class="image-wrapper" onclick="openLightbox('nature/nature-floral-archway-lawn-swing.jpg', 'Sunlit Manicured Lawn, Floral Archway & White Bench Swing', 'GUL-NAT-006')">
+        <img src="nature/nature-floral-archway-lawn-swing.jpg" alt="Sunlit Manicured Lawn, Floral Archway & White Bench Swing" loading="lazy" />
+        <span class="category-badge nature">NATURE</span>
+        <span class="res-badge">540x960</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-NAT-006</div>
+        <h3 class="asset-title">Sunlit Manicured Lawn, Floral Archway & White Bench Swing</h3>
+        <p class="asset-desc">Enchanting vertical garden view showcasing a climbing floral archway with red blossoms, stepping stones across a bright emerald lawn, and a white wooden garden bench swing under the canopy of trees.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 177.5 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 10/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> Gulmohor Resort Official Facebook Page<br/>
+          <strong>Timestamp:</strong> N/A (Published 2024) (540x960 (Native FB Mobile High-Res))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Lawn & Garden Highlights / Couple Romance & Relax Card
+        </div>
+        <div class="rights-pill">
+          OFFICIAL_BUSINESS_PHOTO (Facebook Public Post — Request Original Uncompressed RAW file for Commercial Production)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="events">
+      <div class="image-wrapper" onclick="openLightbox('events/events-love-gulmohor-photo-installation.jpg', 'Iconic 'I ❤️ GULMOHOR' 3D White Lettering Photo Installation', 'GUL-EVT-001')">
+        <img src="events/events-love-gulmohor-photo-installation.jpg" alt="Iconic 'I ❤️ GULMOHOR' 3D White Lettering Photo Installation" loading="lazy" />
+        <span class="category-badge events">EVENTS</span>
+        <span class="res-badge">1920x1080</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-EVT-001</div>
+        <h3 class="asset-title">Iconic 'I ❤️ GULMOHOR' 3D White Lettering Photo Installation</h3>
+        <p class="asset-desc">Signature photo opportunity installation featuring large white freestanding 3D block letters spelling 'I ❤️ GULMOHOR' with a bright red heart centerpiece set on the central lawn, backed by resort cottages and trees.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 548.4 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 10/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> RATUL & RUBAIYA (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 03:12 (192s) (1920x1080 (1080p60 VP9))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Signature Photo Spots / Guest Memories & Social Photo Wall
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="events">
+      <div class="image-wrapper" onclick="openLightbox('events/events-kids-playground-zone.jpg', 'Dedicated Kids Play Zone with Swings, Slide & Seesaw', 'GUL-EVT-002')">
+        <img src="events/events-kids-playground-zone.jpg" alt="Dedicated Kids Play Zone with Swings, Slide & Seesaw" loading="lazy" />
+        <span class="category-badge events">EVENTS</span>
+        <span class="res-badge">1920x1080</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-EVT-002</div>
+        <h3 class="asset-title">Dedicated Kids Play Zone with Swings, Slide & Seesaw</h3>
+        <p class="asset-desc">Fully fenced, child-safe outdoor playground area featuring bright yellow slides, dual swings, blue seesaws, and stepping stones enclosed by a white picket fence and trimmed privet hedges.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 642.1 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 9.5/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> RATUL & RUBAIYA (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 01:54 (114s) (1920x1080 (1080p60 VP9))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Family Packages Section / Children's Playground Feature
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="events">
+      <div class="image-wrapper" onclick="openLightbox('events/events-kids-playhouse-portrait.jpg', 'Vibrant Children Play Castle & Slide in Garden', 'GUL-EVT-003')">
+        <img src="events/events-kids-playhouse-portrait.jpg" alt="Vibrant Children Play Castle & Slide in Garden" loading="lazy" />
+        <span class="category-badge events">EVENTS</span>
+        <span class="res-badge">1080x1920</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-EVT-003</div>
+        <h3 class="asset-title">Vibrant Children Play Castle & Slide in Garden</h3>
+        <p class="asset-desc">Crisp portrait view of the cheerful blue and yellow playhouse tower with sliding chutes and swings set against tall banana trees and blue sky.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 397.4 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 9.5/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> Foysal Khan Kobi (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 00:33 (33s) (1080x1920 (1080p60 Vertical HDR))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Mobile App / Vertical Card Layout / Family Amenities Modal
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="events">
+      <div class="image-wrapper" onclick="openLightbox('events/events-grand-royal-entrance-gate.jpg', 'Royal Black & Gold Wrought-Iron Security Entrance Gates at Night', 'GUL-EVT-004')">
+        <img src="events/events-grand-royal-entrance-gate.jpg" alt="Royal Black & Gold Wrought-Iron Security Entrance Gates at Night" loading="lazy" />
+        <span class="category-badge events">EVENTS</span>
+        <span class="res-badge">1920x1080</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-EVT-004</div>
+        <h3 class="asset-title">Royal Black & Gold Wrought-Iron Security Entrance Gates at Night</h3>
+        <p class="asset-desc">Impressive night shot of the resort's towering black wrought-iron security gates adorned with intricate gold medallions, illuminated stone pillars, and manicured boundary fence.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 170.9 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 8.5/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> RATUL & RUBAIYA (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 12:07 (727s) (1920x1080 (1080p60 VP9))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Security, Privacy & Gate Entrance Showcase
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="events">
+      <div class="image-wrapper" onclick="openLightbox('events/events-promenade-night-illumination.jpg', 'Illuminated Fountain Promenade with Glowing Neon Resort Sign', 'GUL-EVT-005')">
+        <img src="events/events-promenade-night-illumination.jpg" alt="Illuminated Fountain Promenade with Glowing Neon Resort Sign" loading="lazy" />
+        <span class="category-badge events">EVENTS</span>
+        <span class="res-badge">1920x1080</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-EVT-005</div>
+        <h3 class="asset-title">Illuminated Fountain Promenade with Glowing Neon Resort Sign</h3>
+        <p class="asset-desc">Atmospheric nighttime landscape showing the central entrance promenade illuminated by under-water fountain lights and festive fairy lights, with the illuminated 'I ❤️ GULMOHOR' sign glowing in the distance.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 70.9 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 8.5/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> RATUL & RUBAIYA (YouTube Vlog)<br/>
+          <strong>Timestamp:</strong> 12:19 (739s) (1920x1080 (1080p60 VP9))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Night Life & Evening Ambience Section
+        </div>
+        <div class="rights-pill">
+          THIRD_PARTY_CONTENT (Internal Website Demo Only — Request Original 4K RAW/ProRes & Written Commercial Clearance for Public Production Launch)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="events">
+      <div class="image-wrapper" onclick="openLightbox('events/events-wedding-poolside-portrait.jpg', 'Bride & Groom Poolside Wedding Portrait with Floral Garlands', 'GUL-EVT-006')">
+        <img src="events/events-wedding-poolside-portrait.jpg" alt="Bride & Groom Poolside Wedding Portrait with Floral Garlands" loading="lazy" />
+        <span class="category-badge events">EVENTS</span>
+        <span class="res-badge">960x540</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-EVT-006</div>
+        <h3 class="asset-title">Bride & Groom Poolside Wedding Portrait with Floral Garlands</h3>
+        <p class="asset-desc">Authentic wedding photography moment showing a happy bride and groom dressed in traditional wedding attire with floral garlands standing beside the turquoise resort swimming pool.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 58.7 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 9.0/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> Gulmohor Resort Official Facebook Page (Wedding Chronicle Shoot)<br/>
+          <strong>Timestamp:</strong> N/A (Published 2024) (960x540 (Facebook 16:9 Landscape))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Weddings & Celebrations Package / Destination Wedding Hero
+        </div>
+        <div class="rights-pill">
+          OFFICIAL_BUSINESS_PHOTO (Facebook Public Post — Request High-Res RAW Shoot Files from Wedding Chronicle for Commercial Release)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="brand">
+      <div class="image-wrapper" onclick="openLightbox('brand/brand-official-logo.jpg', 'Official Gulmohor Resort Brand Identity Logo', 'GUL-BRD-001')">
+        <img src="brand/brand-official-logo.jpg" alt="Official Gulmohor Resort Brand Identity Logo" loading="lazy" />
+        <span class="category-badge brand">BRAND</span>
+        <span class="res-badge">1200x1200</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-BRD-001</div>
+        <h3 class="asset-title">Official Gulmohor Resort Brand Identity Logo</h3>
+        <p class="asset-desc">Official high-resolution circular resort crest featuring stylized architectural pillars, blooming gulmohar floral motif, and bold typography 'GULMOHOR RESORT & RESTAURANT'.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 48.1 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 10/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> Gulmohor Resort Official Facebook Page<br/>
+          <strong>Timestamp:</strong> N/A (Current Active Profile Photo) (1200x1200 (Square 1:1))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Website Header Navbar, Favicon, Footer Brand Block, Invoice Headers
+        </div>
+        <div class="rights-pill">
+          OFFICIAL_BRAND_ASSET (Official Facebook Identity Asset — Permitted for Demo Design & Client Delivery)
+        </div>
+      </div>
+    </div>
+    
+    <div class="asset-card" data-category="brand">
+      <div class="image-wrapper" onclick="openLightbox('brand/brand-facebook-cover-banner.jpg', 'Official Facebook Cover Banner featuring 'You Find Peace'', 'GUL-BRD-002')">
+        <img src="brand/brand-facebook-cover-banner.jpg" alt="Official Facebook Cover Banner featuring 'You Find Peace'" loading="lazy" />
+        <span class="category-badge brand">BRAND</span>
+        <span class="res-badge">2035x773</span>
+      </div>
+      <div class="card-body">
+        <div class="asset-id">GUL-BRD-002</div>
+        <h3 class="asset-title">Official Facebook Cover Banner featuring 'You Find Peace'</h3>
+        <p class="asset-desc">Official ultra-wide Facebook cover graphic showcasing the resort estate at dusk with the verified brand philosophy phrase 'You Find Peace' and contact phone numbers.</p>
+        <div class="meta-row">
+          <span class="meta-item"><strong>Size:</strong> 1218.7 KB</span>
+          <span class="meta-item"><strong>Rating:</strong> 10/10</span>
+        </div>
+        <div class="source-info">
+          <strong>Source:</strong> Gulmohor Resort Official Facebook Page<br/>
+          <strong>Timestamp:</strong> N/A (Current Active Cover Banner) (2035x773 (Ultra-Wide 2.63:1))
+        </div>
+        <div class="placement-tag">
+          <strong>Placement:</strong> Brand Philosophy Section / Contact Us Page Header / Social Banner
+        </div>
+        <div class="rights-pill">
+          OFFICIAL_BRAND_ASSET (Official Facebook Cover Banner — Permitted for Demo Design & Client Delivery)
+        </div>
+      </div>
+    </div>
+    
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightboxModal" onclick="closeLightbox(event)">
+    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+    <img class="lightbox-content" id="lightboxImg" src="" alt="" />
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+
+  <script>
+    function filterCategory(category) {
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const cards = document.querySelectorAll('.asset-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function openLightbox(src, title, id) {
+      const modal = document.getElementById('lightboxModal');
+      const img = document.getElementById('lightboxImg');
+      const cap = document.getElementById('lightboxCaption');
+      img.src = src;
+      cap.innerHTML = `<strong>${id}</strong> — ${title}`;
+      modal.classList.add('active');
+    }
+
+    function closeLightbox(e) {
+      if (!e || e.target.id === 'lightboxModal' || e.target.classList.contains('close-lightbox')) {
+        document.getElementById('lightboxModal').classList.remove('active');
+      }
+    }
+  </script>
+</body>
+</html>

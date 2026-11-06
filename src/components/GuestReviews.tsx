@@ -1,0 +1,22 @@
+import React, { useState } from 'react';
+import { ArrowUpRight, ChevronLeft, ChevronRight, ShieldCheck } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+import { RESORT_CONTACT } from '../data/resortData';
+
+const feedback = [
+  { title: { en: 'A setting visitors remember', bn: 'দর্শনার্থীদের মনে থাকে যে পরিবেশ' }, body: { en: 'Available public feedback research repeatedly highlights the gardens, poolside setting and resort architecture. This is a synthesis of themes, not a guest quotation.', bn: 'প্রকাশ্য মতামত গবেষণায় বাগান, পুলের পরিবেশ ও রিসোর্টের স্থাপত্য বারবার উঠে এসেছে। এটি বিষয়গুলোর সারাংশ, কোনো অতিথির সরাসরি উদ্ধৃতি নয়।' } },
+  { title: { en: 'Space for a quieter visit', bn: 'নিরিবিলি সময় কাটানোর জায়গা' }, body: { en: 'The enclosed grounds, shaded mango trees and family recreation areas are among the positive themes in the available research. Individual review text and a verified rating total are not available for publication.', bn: 'ঘেরা প্রাঙ্গণ, ছায়াঘেরা আমগাছ ও পরিবারের বিনোদনের জায়গা গবেষণায় পাওয়া ইতিবাচক বিষয়গুলোর মধ্যে রয়েছে। প্রকাশের জন্য যাচাইকৃত ব্যক্তিগত রিভিউ ও মোট রেটিং পাওয়া যায়নি।' } },
+  { title: { en: 'Clear details make planning easier', bn: 'স্পষ্ট তথ্য পরিকল্পনা সহজ করে' }, body: { en: 'Some public feedback mentions premium pricing and a desire for clearer package details. Published room and day-visit information helps visitors ask focused questions before travelling.', bn: 'কিছু প্রকাশ্য মতামতে তুলনামূলক বেশি মূল্য ও প্যাকেজের তথ্য আরও স্পষ্ট করার প্রয়োজন বলা হয়েছে। প্রকাশিত রুম ও ডে-ভিজিটের তথ্য ভ্রমণের আগে নির্দিষ্ট প্রশ্ন করতে সাহায্য করে।' } },
+];
+
+export const GuestReviews: React.FC = () => {
+  const { language, t } = useLanguage();
+  const [active, setActive] = useState(0);
+  const change = (step: number) => setActive((active + step + feedback.length) % feedback.length);
+  return <section id="testimonials" className="bg-forest text-ivory py-20 sm:py-24" aria-labelledby="guest-feedback-title">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[.8fr_1.2fr] gap-12 lg:gap-20 items-center">
+      <div><p className="text-[11px] uppercase tracking-[.14em] text-champagne mb-4">{t({ en: 'Guest feedback / Research summary', bn: 'অতিথি মতামত / গবেষণা সারাংশ' })}</p><h2 id="guest-feedback-title" className={`text-4xl sm:text-5xl leading-tight ${language === 'bn' ? 'font-displayBn' : 'font-serifEng'}`}>{t({ en: 'What visitors value.', bn: 'দর্শনার্থীরা যা পছন্দ করেন।' })}</h2><p className="mt-5 max-w-md text-sm text-ivory/75">{t({ en: 'A transparent summary of recurring themes in public feedback. No names, ratings or direct quotes have been invented.', bn: 'প্রকাশ্য মতামতে পুনরাবৃত্ত বিষয়গুলোর স্বচ্ছ সারাংশ। কোনো নাম, রেটিং বা সরাসরি উদ্ধৃতি তৈরি করা হয়নি।' })}</p><a href={RESORT_CONTACT.googleMapsUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 mt-6 text-sm text-champagne underline underline-offset-4">{t({ en: 'Open the resort on Google Maps', bn: 'Google Maps-এ রিসোর্ট দেখুন' })}<ArrowUpRight className="w-4 h-4" /></a></div>
+      <div className="border-t border-white/20 pt-8"><div className="flex items-start justify-between gap-6 min-h-44"><div><p className="text-xs uppercase tracking-widest text-champagne">0{active + 1} / 0{feedback.length}</p><h3 className={`mt-5 text-3xl sm:text-4xl max-w-xl ${language === 'bn' ? 'font-displayBn' : 'font-serifEng'}`}>{t(feedback[active].title)}</h3><p className="mt-4 text-sm leading-relaxed text-ivory/80 max-w-xl">{t(feedback[active].body)}</p></div><ShieldCheck className="w-6 h-6 text-champagne shrink-0" aria-label={t({ en: 'Research-based summary', bn: 'গবেষণাভিত্তিক সারাংশ' })} /></div><div className="mt-8 flex items-center justify-between border-t border-white/20 pt-5"><span className="text-xs text-ivory/60">{t({ en: 'Source: public feedback research summary, Nov 2026', bn: 'সূত্র: প্রকাশ্য মতামত গবেষণা সারাংশ, নভেম্বর ২০২৬' })}</span><div className="flex gap-2"><button onClick={() => change(-1)} aria-label={t({ en: 'Previous feedback theme', bn: 'আগের মতামতের বিষয়' })} className="w-11 h-11 border border-white/30 flex items-center justify-center hover:bg-white/10"><ChevronLeft /></button><button onClick={() => change(1)} aria-label={t({ en: 'Next feedback theme', bn: 'পরের মতামতের বিষয়' })} className="w-11 h-11 border border-white/30 flex items-center justify-center hover:bg-white/10"><ChevronRight /></button></div></div></div>
+    </div>
+  </section>;
+};

@@ -1,0 +1,201 @@
+{
+  "business_identity": {
+    "official_name": "Gulmohor Resort & Restaurant",
+    "alternative_spellings": [
+      "Gulmohar Resort",
+      "Gulmohor Resort Munshiganj",
+      "গুলমোহর রিসোর্ট",
+      "গুলমহর রিসোর্ট"
+    ],
+    "business_category": "Resort & Restaurant / Event Venue",
+    "official_tagline": "The Perfect Place for Your Perfect Day.",
+    "brand_phrase": "You Find Peace",
+    "brand_promise": "Find A Home Close To Home",
+    "brand_colors": {
+      "primary_coral": "#EE7055",
+      "secondary_charcoal": "#222222",
+      "accent_gold": "#D4AF37",
+      "surface_white": "#FFFFFF",
+      "nature_green": "#2D5A27"
+    }
+  },
+  "location_and_access": {
+    "address_line_1": "Sreenagar-Dohar Highway, Damla",
+    "union": "Rarikhal Union (and border area of Ichapura/Sirajdikhan)",
+    "upazila": "Sreenagar Upazila",
+    "district": "Munshiganj District",
+    "division": "Dhaka Division",
+    "postal_code": "1550 (Official Branding) / 1535 (Postal Area)",
+    "country": "Bangladesh",
+    "landmarks": "Opposite Bhuiyan Medical College / Clinic, in front of Damla School",
+    "coordinates": {
+      "latitude": 23.5185625,
+      "longitude": 90.2610625
+    },
+    "plus_code": "G796+CCX, Damla, Sreenagar, Munshiganj",
+    "distance_from_dhaka": "Approx. 30-40 minutes drive via Bangabandhu (Dhaka-Mawa) Expressway",
+    "public_transit": "Seba Paribahan bus from Postogola, Dhaka directly to Damla School / Gulmohor Resort gate (fare: 50-70 BDT per person)"
+  },
+  "contact_channels": {
+    "primary_phone": "+8801911498819",
+    "primary_phone_formatted": "01911-498819",
+    "whatsapp_number": "+8801911498819",
+    "secondary_phone": "01711526654",
+    "official_email": "NOT_PUBLICLY_LISTED",
+    "facebook_url": "https://www.facebook.com/profile.php?id=100063883132593",
+    "facebook_share_url": "https://www.facebook.com/share/1EMdL131U2/",
+    "google_maps_url": "https://maps.app.goo.gl/8vp6UJWPzTyg55AM6",
+    "instagram_url": "NOT_VERIFIED",
+    "official_website_domain": "NOT_EXISTENT"
+  },
+  "digital_presence_audit": {
+    "facebook_followers": 5722,
+    "facebook_talking_about": 233,
+    "facebook_were_here_checkins": 655,
+    "google_maps_place_id": "/g/11w2_3m5h9",
+    "google_maps_feature_id": "0x375599001f59f4e7:0x20e5959b4c5ddd05",
+    "website_status": "NO_OFFICIAL_WEBSITE",
+    "online_booking_engine": "NONE"
+  },
+  "accommodation_options": [
+    {
+      "room_type": "Couple Deluxe Room",
+      "room_number_reference": "Room #2 inspected in video",
+      "capacity_adults": 2,
+      "bed_type": "Queen Bed / Couple Bed",
+      "air_conditioning": true,
+      "rate_night_stay_bdt": 7000,
+      "breakfast_included": true,
+      "breakfast_menu": [
+        "Paratha",
+        "Dal",
+        "Egg",
+        "Mixed Vegetables",
+        "Tea"
+      ],
+      "amenities": [
+        "Attached washroom with separate shower",
+        "Electric kettle / tea setup",
+        "Mini refrigerator",
+        "Sofa & coffee table",
+        "Work chair & desk",
+        "Television",
+        "Wardrobe",
+        "Balcony facing pool & garden"
+      ]
+    },
+    {
+      "room_type": "Double Deluxe Room",
+      "capacity_adults": 4,
+      "bed_type": "Double Couple Beds",
+      "air_conditioning": true,
+      "rate_night_stay_bdt": 9000,
+      "breakfast_included": true,
+      "amenities": [
+        "Attached bathroom",
+        "Air conditioning",
+        "Television",
+        "Balcony"
+      ]
+    },
+    {
+      "room_type": "Premium Suite Room",
+      "capacity_adults": 2,
+      "room_layout": "Separate living lounge + inner bedroom",
+      "air_conditioning": true,
+      "rate_night_stay_bdt": 12000,
+      "breakfast_included": true,
+      "amenities": [
+        "Luxurious sofa set",
+        "Dining/work table",
+        "Large bedroom with premium bed",
+        "Wardrobe",
+        "Designer washroom with separate shower glass enclosure",
+        "Balcony view"
+      ]
+    }
+  ],
+  "facilities_and_amenities": {
+    "swimming_pool": {
+      "confirmed": true,
+      "dimensions": "70 ft x 35 ft",
+      "contractor": "QR Bangladesh Swimming Pool Store",
+      "features": [
+        "Underwater night illumination",
+        "Entry stairs with railing",
+        "Poolside loungers and shaded benches",
+        "Rose flowerbeds along perimeter"
+      ],
+      "public_hourly_rate_bdt": 400
+    },
+    "restaurant_and_dining": {
+      "confirmed": true,
+      "indoor_dining_capacity": "Ground floor air-conditioned hall with pool views",
+      "outdoor_dining": "Lawn seating & poolside dining tables",
+      "live_kitchen": "Dedicated live outdoor kitchen for barbecue, kabab, and grills",
+      "buffet_setup": "Stainless steel chafing dishes and warmers for group events"
+    },
+    "banquet_and_events": {
+      "confirmed": true,
+      "indoor_hall": "Banquet hall for conferences, indoor wedding stages, and dining",
+      "outdoor_lawn": "Manicured green lawn with marquee tent setup for Gaye Holud, weddings, and birthdays",
+      "past_verified_events": [
+        "Wedding ceremonies",
+        "Receptions",
+        "Gaye Holud",
+        "Dhaka Govt Muslim High School 1985 Batch 40-year reunion",
+        "DUFA 9596 gatherings"
+      ]
+    },
+    "family_and_recreation": {
+      "kids_zone": "Designated playground near entrance with swings, slides, and rides",
+      "garden_and_landscaping": "Rose gardens, ornamental shrubs, mature mango trees",
+      "garden_hammock": "Hammock slung between two mango trees in garden lounge",
+      "garden_swings": "White wooden bench swings on lawn",
+      "photo_spots": "\"I LOVE GULMOHOR\" sign, flower archway, illuminated night pool"
+    },
+    "infrastructure": {
+      "car_parking": "Dedicated on-site parking lot",
+      "security": "Gated entrance with security post",
+      "fountain": "Entry ornamental water fountain"
+    }
+  },
+  "packages_and_pricing": {
+    "general_entry_ticket_bdt": 100,
+    "swimming_pool_hourly_bdt": 400,
+    "day_long_couple_package_bdt": 6500,
+    "day_long_package_includes": [
+      "Room access for day",
+      "Lunch (Fried Rice, Chicken Fry, Chicken Chili Onion)",
+      "Afternoon snacks (Patties, Piyaju, Tea)"
+    ],
+    "day_long_room_only_bdt": 5000,
+    "couple_deluxe_night_bdt": 7000,
+    "double_deluxe_night_bdt": 9000,
+    "premium_suite_night_bdt": 12000,
+    "ramadan_special_package_bdt": 500,
+    "ramadan_package_menu": [
+      "Lacchi",
+      "Dates",
+      "Chhola",
+      "Aloo Chop",
+      "Beguni",
+      "Piyaju",
+      "Polao",
+      "Roast",
+      "Egg",
+      "Cold Drinks"
+    ]
+  },
+  "booking_journey": {
+    "current_method": "Phone call or WhatsApp direct chat (01911-498819)",
+    "advance_payment": "Required for room holding and event lawn booking via bKash / bank",
+    "cancellation_policy": "Not publicly stated (GUEST MUST CLARIFY OVER PHONE)",
+    "pain_points": [
+      "No real-time room availability checker",
+      "No instant online booking confirmation",
+      "Pricing not transparently published on a single page",
+      "No digital menu browsing"
+    ]
+  }
+}

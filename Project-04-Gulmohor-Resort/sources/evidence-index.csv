@@ -1,0 +1,29 @@
+Fact ID,Claim / Fact,Primary Source,Supporting Sources,Status
+F001,Official Business Name is Gulmohor Resort & Restaurant,S001,"S003, S005, S006",VERIFIED
+F002,Business Category is Resort & Restaurant,S001,"S005, S006",VERIFIED
+F003,"Exact Physical Location is Damla, Sreenagar, Munshiganj, Dhaka-1550",S001,"S003, S004, S006, S007",VERIFIED
+F004,"Geographic Coordinates are Lat: 23.5185625 N, Lon: 90.2610625 E (Plus Code: G796+CCX)",S003,S004,VERIFIED
+F005,"Road Access is Sreenagar-Dohar Highway, opposite Bhuiyan Medical, front of Damla School",S006,"S004, S007, S011",VERIFIED
+F006,Main Booking Phone & WhatsApp Number is 01911-498819,S001,"S005, S006",VERIFIED
+F007,Secondary Contact Number is 01711526654,S010,None,REPORTED
+F008,"Brand Tagline is ""The Perfect Place for Your Perfect Day.""",S001,None,VERIFIED
+F009,"Cover Brand Phrase is ""You Find Peace""",S001,FB-POST-001,VERIFIED
+F010,"Marketing Subhead is ""Find A Home Close To Home""",S001,FB-POST-001,VERIFIED
+F011,Resort features an outdoor swimming pool measuring 70 x 35 feet,S011,"S001, S005, S006, S007",VERIFIED
+F012,Public swimming pool access fee is 400 BDT per hour,S006,None,CORROBORATED
+F013,General visitor / child entry ticket is 100 BDT,S006,None,CORROBORATED
+F014,"Couple Deluxe Room night stay rate is 7,000 BDT (includes complimentary breakfast for 2)",S005,S006,CORROBORATED
+F015,"Double Deluxe Room night stay rate is 9,000 BDT (capacity: 4 persons)",S005,None,REPORTED
+F016,"Premium Suite Room night stay rate is 12,000 BDT",S005,S007,REPORTED
+F017,"Day-long couple package rate is 6,500 BDT (includes lunch and afternoon snacks for 2)",S005,S006,CORROBORATED
+F018,"Day-long room without set menu rate is 5,000 BDT",S006,None,REPORTED
+F019,"Complimentary breakfast menu: Paratha, Dal, Egg, Mixed Vegetables, and Tea",S005,None,CORROBORATED
+F020,"Day-long lunch menu: Fried Rice, Chicken Fry, Chicken Chili Onion",S005,None,CORROBORATED
+F021,Resort features an indoor banquet hall room and an outdoor open stage lawn,S006,"S005, S007, S010",VERIFIED
+F022,Resort has a dedicated Live Kitchen for Barbecue and Kababs,S006,FB-POST-003,VERIFIED
+F023,Resort has on-site dedicated car parking space,S001,S006,VERIFIED
+F024,Resort has a designated Kids Zone with children playground rides,S005,S006,VERIFIED
+F025,"Public transit access: Seba Paribahan bus from Postogola, Dhaka to Damla, Sreenagar (fare: 50-70 BDT)",S007,S005,VERIFIED
+F026,Resort currently has NO dedicated official website domain and relies solely on Facebook and WhatsApp,S001,"S003, S005, S006",VERIFIED
+F027,Ownership / Management entity mentioned as Mir Enterprise / Mir Emprise in video report,S007,None,UNVERIFIED
+F028,Resort Manager recruitment salary benchmark 10k-20k BDT/month,S012,None,REPORTED

@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Production build artifacts (built by Vercel from source)
+dist/
+dist-ssr/
+*.local
+
+# Environment variables & local secrets
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# Editor & OS files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# TypeScript incremental build cache
+*.tsbuildinfo
+
+# Local temporary files, scratch scripts and backups
+scratch/
+.agents/
+.codex/
+backup*
+*.tar.gz
+
+# Vercel project configuration / build cache
+.vercel

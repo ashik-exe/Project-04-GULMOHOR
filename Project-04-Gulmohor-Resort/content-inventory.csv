@@ -1,0 +1,21 @@
+Section,Content Item,Availability,Source Asset,Content Text / Draft Copy,Action Needed
+Header / Navigation,Resort Logo,AVAILABLE,gulmohor-logo-official.jpg,GULMOHOR RESORT & RESTAURANT,Directly usable in demo header
+Header / Navigation,Primary CTA Button,AVAILABLE,S001,Book Now / WhatsApp: 01911-498819,Link directly to https://wa.me/8801911498819
+Homepage Hero,Hero Headline,AVAILABLE,S001,The Perfect Place for Your Perfect Day.,Primary typography headline
+Homepage Hero,Hero Subtitle,AVAILABLE,S001,"You Find Peace — A Home Close To Home in Munshiganj, just 30 minutes from Dhaka.",Secondary brand promise copy
+Homepage Hero,Hero Background Media,AVAILABLE,resort-main-building-daytime.jpg,1920x1080 architectural photo of mansion & swimming pool,High-resolution hero visual backdrop
+About Section,Resort Overview Story,AVAILABLE,"S001, S005, S006","Escape the hustle of Dhaka to Gulmohor Resort in Damla, Sreenagar. Designed with classical elegance, lush greenery, and modern comfort, we offer a tranquil retreat for families, couples, and celebrations.",Polished brand storytelling
+Accommodation,Couple Deluxe Room Card,AVAILABLE,room-couple-deluxe-interior.jpg,"Couple Deluxe Room | BDT 7,000/night | 2 Guests | Complimentary Breakfast | Attached Bath, AC, TV, Refrigerator, Balcony",Feature room card with specifications
+Accommodation,Double Deluxe Room Card,AVAILABLE,S005,"Double Deluxe Room | BDT 9,000/night | 4 Guests | Complimentary Breakfast | 2 Double Beds, Attached Bath, AC, Balcony",Requires additional photo from management
+Accommodation,Premium Suite Room Card,AVAILABLE,room-suite-living-area.jpg,"Premium Suite | BDT 12,000/night | 2 Guests | VIP Lounge + Bedroom | Deluxe Shower, Air Conditioning, Panoramic Balcony",Luxury tier highlight
+Facilities,Swimming Pool Showcase,AVAILABLE,swimming-pool-wide-view-day.jpg,"Grand 70 x 35 ft Swimming Pool | Crystal clear filtered water, night illumination, hourly visitor access (BDT 400/hr) and complimentary guest access.",Hero facility feature
+Facilities,Kids Zone Showcase,AVAILABLE,activities-kids-zone-playground.jpg,"Dedicated outdoor children playground with swings, slides, and fun rides for young visitors.",Family appeal feature
+Facilities,Lush Gardens & Walkways,AVAILABLE,garden-archway-swing-lawn.jpg,"Lush gardens, rose flowerbeds, hanging hammock between mango trees, and garden swings.",Nature appeal feature
+Dining & Restaurant,Poolside Restaurant,AVAILABLE,restaurant-indoor-dining-hall.jpg,"Air-conditioned dining hall with panoramic pool views serving authentic Bengali cuisine, Chinese favorites, and catering spreads.",Dining overview
+Dining & Restaurant,Live BBQ & Grill Station,AVAILABLE,promotion-bbq-evening-grill.jpg,"""The Sun Goes Down. The Grill Heats Up. The Evening Comes Alive."" Outdoor live kitchen for kebabs and grilled specialties.",Evening experience feature
+Packages,Day-Long Leisure Package,AVAILABLE,"S005, S006","Couple Day Package: BDT 6,500 for 2 guests. Includes day room access, delicious lunch (Fried Rice, Chicken Fry, Chili Onion), afternoon snacks, and pool access.",Day outing promo card
+Events & Banquets,Destination Weddings & Gaye Holud,AVAILABLE,event-wedding-marquee-venue.jpg,"Grand Marquee Lawn & Indoor Hall | Capacity for weddings, Gaye Holud, corporate retreats, and school reunions. Custom stage decoration and catering.",Event inquiry section
+Photo Gallery,Curated Photo Grid,AVAILABLE,28 categorized assets in /assets/,"Property, Pool, Rooms, Dining, Garden, Events, Night Ambiance",Interactive filterable lightbox gallery
+Location & Map,Interactive Directions Map,AVAILABLE,location-map-osm-sreenagar-damla.png,"Sreenagar-Dohar Highway, Damla, Munshiganj (Opposite Bhuiyan Medical, Front of Damla School). 30 min from Dhaka via Expressway.",Embedded Google Maps iframe + route instructions
+Contact & Inquiry,Direct WhatsApp Booking Form,AVAILABLE,01911-498819,Instant reservation inquiry via WhatsApp +8801911498819,WhatsApp floating button + interactive reservation inquiry form
+FAQ Section,Frequently Asked Questions,AVAILABLE,Synthesized from Review Analysis,"Pool access rules, day package timings (typically 9am-6pm), couple policies, parking availability, outside food rules.",Accordion FAQ component
