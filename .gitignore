@@ -38,3 +38,4 @@ backup*
 
 # Vercel project configuration / build cache
 .vercel
+.env*
